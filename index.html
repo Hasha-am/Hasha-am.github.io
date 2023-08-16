@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>VOTE</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous">
+        <style>
+        .main{
+            margin-left: 20%;
+            margin-right: 20%;
+        }
+        .button1{
+            width: 45%;
+            box-shadow: 8px 8px 3px rgb(192, 189, 189);
+            float: left;
+            margin-right: 10%;
+            /* transition: background-color 0.3s ease-in-out; */
+        }
+        .button2{
+            width: 45%;
+            box-shadow: 8px 8px 3px rgb(192, 189, 189);
+            float: left;
+            /* transition: background-color 0.3s ease-in-out; */
+        }
+        .context{
+            clear: both;
+            background-color: rgb(66, 63, 63);
+            color:white;
+            padding-top: 6%;
+            text-align: center;
+            
+        }
+        
+        .context h1{
+            text-align: center;
+        }
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .container div{
+            flex: 0 0 35%;
+            margin-top: 2%;
+        }
+        div img{
+            width:90%;
+            height: auto;
+            border-radius: 50%;
+            margin-right: 10%;
+            /* margin-bottom: 5%; */
+        }
+        div p{
+            margin-right: 10%;
+        }
+        .roundBtn{
+            border-radius: 50%;
+        }
+        /* .roundBtn:active{
+            border: 5px solid red;
+        } */
+        .bordered {
+            border: 10px solid red;
+        }
+        .sub,#votes{
+            display:none;
+        }
+    </style>
+    </head>
+    <body>
+        <div class="main">
+            <div class="top"  >
+                <iframe width="100%" height="500px" id="video"
+                    src="https://www.youtube.com/embed/i-87sTsXhOY"
+                    title="How much weight can Steve carry ?" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+                
+            </div>
+            <button class="btn btn-danger btn-lg button1 active-button"
+                onclick="hideVote(this)"
+                id="button1"> VIDEO </button>
+            <button class="btn btn-danger btn-lg button2 active-button" 
+                onclick="showVote(this)"
+                id="button2"> VOTE </button>
+
+            <div style="clear: both;"></div>
+            <div class="context" id="votes">
+                <h1> Vote for Your <br> Favourite Contestant</h1>
+                <div class="container">
+                    <div>
+
+                        <img class="btn roundBtn" onclick="toggleBorder(this)"
+                            id="button1"
+                            src="data:image/jpeg;base64,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"
+                            alt="first">
+                        <p>Amber</p>
+                    </div>
+                    <div>
+                        <img class="btn roundBtn" onclick="toggleBorder(this)"
+                            id="button2" 
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbpF3IRjq3K2vF74PNI4mpc-kzYwXmegSupg&usqp=CAU"
+                            alt="second">
+                        <p>Mark</p>
+                    </div>
+                    <div>
+                        <img class="btn roundBtn" onclick="toggleBorder(this)"
+                            id="button3"
+                            src="https://marketplace.canva.com/EAFXS8-cvyQ/1/0/1600w/canva-brown-and-light-brown%2C-circle-framed-instagram-profile-picture-2PE9qJLmPac.jpg"
+                            alt="third">
+                        <p>Jimmy</p>
+                    </div>
+                    <div>
+                        <img class="btn roundBtn" onclick="toggleBorder(this)"
+                            id="button4"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsynwv-5qtogtOwJbIjaPFJUmHpzhxgqIAug&usqp=CAU"
+                            alt="fourth">
+                        <p>Poonam</p>
+
+                    </div>
+                    <div>
+                        <img class="btn roundBtn" onclick="toggleBorder(this)"
+                            id="button5"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDyJkt4RLBYlnGSfgeUb7umKJcbKOjzq51kg&usqp=CAU"
+                            alt="fifth">
+                        <p>Kiran</p>
+                    </div>
+
+                </div>
+                <button class="btn btn-danger sub" onclick="removeBorders(this)"
+                    id="submit" style="width: 90%; margin:auto ;">SUBMIT
+                </button>
+                <div style="clear: both; padding-bottom: 15%;"></div>
+            </div>
+        </div>
+
+        <script>
+            let activeButton = null;
+            function toggleBorder(button) {
+
+                document.getElementById('submit').style.display = 'block';
+
+                if (activeButton) {
+                    activeButton.classList.remove('bordered');
+                }
+    
+                if (activeButton !== button) {
+                    button.classList.add('bordered');
+                    activeButton = button;
+                } else {
+                    activeButton = null;
+                }
+            }
+
+            function removeBorders() {
+
+                document.getElementById('submit').style.display = 'none';
+            if (activeButton) {
+                activeButton.classList.remove('bordered');
+                activeButton = null;
+            }
+        }
+            function showVote(){
+                document.getElementById("votes").style.display="block"
+                // document.getElementById("video").style.height="30%"
+                alert("Voting Line IS OPEN")
+                const iframe = document.getElementById('video');
+                iframe.setAttribute('height', "350px");
+
+            }
+            function hideVote(){
+                document.getElementById('votes').style.display="none"
+                // document.getElementById("video").style.height="50%"
+                const iframe = document.getElementById('video');
+                iframe.setAttribute('height', "500px");
+            }
+        </script>
+    </body>
+</html>
