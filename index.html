@@ -69,9 +69,10 @@
         .bordered {
             border: 10px solid red;
         }
-        .sub,#votes{
+        .sub,#votes,#thank{
             display:none;
         }
+
     </style>
     </head>
     <body>
@@ -137,6 +138,10 @@
                 <button class="btn btn-danger sub" onclick="removeBorders(this)"
                     id="submit" style="width: 90%; margin:auto ;">SUBMIT
                 </button>
+                <div>
+                    <p id="thank" style="text-align: center;margin: 0;font-size: 30px;color: rgb(236, 190, 61);border: 4px rgb(236, 190, 61) dashed;padding: 10px;">Thanks For Voting</p>
+
+                </div>
                 <div style="clear: both; padding-bottom: 15%;"></div>
             </div>
         </div>
@@ -166,13 +171,20 @@
                 activeButton.classList.remove('bordered');
                 activeButton = null;
             }
+            var section = document.getElementById('thank');
+      section.style.display = 'block';
+
+      setTimeout(function() {
+        section.style.display = 'none';
+      }, 1400)
+
         }
             function showVote(){
                 document.getElementById("votes").style.display="block"
                 // document.getElementById("video").style.height="30%"
+                alert("Voting Line IS OPEN")
                 const iframe = document.getElementById('video');
                 iframe.setAttribute('height', "350px");
-                alert("Voting Line IS OPEN")
 
             }
             function hideVote(){
